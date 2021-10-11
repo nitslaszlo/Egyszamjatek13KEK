@@ -32,15 +32,18 @@ export default class Content {
 
         res.write(`3. feladat: Játékosok száma: ${mo.játékosokSzáma}\n`);
 
-        res.write(`4. feladat: Fordulók száma: ${mo.fordulókSzáma}\n`);
+        const fordulókSzáma: number = mo.fordulókSzáma;
+        res.write(`4. feladat: Fordulók száma: ${fordulókSzáma}\n`);
 
-        // Próbáljuk számra konvertálni a "kor" paraméter (http://localhost:8080/?kor=16) értékét:
-        // let korod = parseInt(params.get("kor") as string);
-        // Ha nincs "kor" paraméter megadva, vagy nem lehet számra konvertálni értékét,
-        // akkor a "korod" változóba NaN érték kerül, ilyenkor legyen 18 év az értéke:
-        // if (isNaN(korod)) korod = 18;
+        res.write(`5. feladat: Az első fordulóban ${mo.voltEgyesTippElsőFordulóban ? "" : "nem "}volt egyes tipp!\n`);
 
-        // res.write(`<label>Kérem a korod: <input type='number' name='kor' value=${korod} style='max-width:100px;' onChange='this.form.submit();'></label>\n`);
+        res.write(`6. feladat: A legnagyobb tipp a fordulók során: ${mo.játékLegnagyobbTippje}\n`);
+
+        // 7. feladat: Input:
+        let inputForduló: number = parseInt(params.get("fordulo") as string);
+        if (isNaN(inputForduló) || inputForduló < 1 || inputForduló > fordulókSzáma) inputForduló = 1;
+        res.write(`<label>7. feladat: Kérem a forduló sorszámát [1-${fordulókSzáma}]: <input type='text' name='fordulo' value=${inputForduló} style='max-width:100px;' onChange='this.form.submit();'></label>\n`);
+        res.write(`8. feladat: ${mo.nyertesTippSzöveg(inputForduló)}\n`);
 
         // <---- Fejezd be a kódolást
 

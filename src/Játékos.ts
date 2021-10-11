@@ -7,6 +7,16 @@ export default class Játékos {
         return this.#tippek.length;
     }
 
+    public get játékosLegnagyobbTippje(): number {
+        let maxTipp = 0;
+        for (const i in this.#tippek) {
+            if (this.#tippek[i] > maxTipp) {
+                maxTipp = this.#tippek[i];
+            }
+        }
+        return maxTipp;
+    }
+
     // Kódtagok:
     constructor(sor: string) {
         const m: string[] = sor.split(" ");
@@ -14,5 +24,10 @@ export default class Játékos {
         for (let i = 1; i < m.length; i++) {
             this.#tippek.push(parseInt(m[i]));
         }
+    }
+
+    public fordulóTippje(forduló: number): number {
+        const fordulóIndexe: number = forduló - 1;
+        return this.#tippek[fordulóIndexe];
     }
 }
