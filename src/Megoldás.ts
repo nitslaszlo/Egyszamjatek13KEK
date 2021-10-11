@@ -8,6 +8,10 @@ export default class Megoldás {
         return this.#játékosok.length;
     }
 
+    public get fordulókSzáma(): number {
+        return this.#játékosok[0].fordulókSzáma;
+    }
+
     constructor(forrás: string) {
         fs.readFileSync(forrás)
             .toString()

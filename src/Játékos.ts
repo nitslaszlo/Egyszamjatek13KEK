@@ -3,6 +3,10 @@ export default class Játékos {
     #név: string; // privát mező TS 3.8.0-ás verziótól használható
     #tippek: number[] = [];
 
+    public get fordulókSzáma(): number {
+        return this.#tippek.length;
+    }
+
     // Kódtagok:
     constructor(sor: string) {
         const m: string[] = sor.split(" ");
