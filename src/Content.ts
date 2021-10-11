@@ -30,6 +30,8 @@ export default class Content {
         res.write("Egyszámjáték feladat megoldása\n");
         const mo: Megoldás = new Megoldás("egyszamjatek.txt");
 
+        res.write(`3. feladat: Játékosok száma: ${mo.játékosokSzáma}`);
+
         // Próbáljuk számra konvertálni a "kor" paraméter (http://localhost:8080/?kor=16) értékét:
         // let korod = parseInt(params.get("kor") as string);
         // Ha nincs "kor" paraméter megadva, vagy nem lehet számra konvertálni értékét,
