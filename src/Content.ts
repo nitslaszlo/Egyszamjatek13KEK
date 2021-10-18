@@ -45,6 +45,10 @@ export default class Content {
         res.write(`<label>7. feladat: Kérem a forduló sorszámát [1-${fordulókSzáma}]: <input type='text' name='fordulo' value=${inputForduló} style='max-width:100px;' onChange='this.form.submit();'></label>\n`);
         res.write(`8. feladat: ${mo.nyertesTippSzöveg(inputForduló)}\n`);
 
+        res.write(`9. feladat: A megadott forduló nyertese: ${mo.nyertesJátékos(inputForduló)}\n`);
+
+        mo.állománybaÍr("nyertes.txt", inputForduló);
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");

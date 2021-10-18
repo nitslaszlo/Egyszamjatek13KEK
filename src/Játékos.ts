@@ -7,6 +7,10 @@ export default class Játékos {
         return this.#tippek.length;
     }
 
+    public get név(): string {
+        return this.#név;
+    }
+
     public get játékosLegnagyobbTippje(): number {
         let maxTipp = 0;
         for (const i in this.#tippek) {
